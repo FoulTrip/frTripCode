@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { useAuth } from "@/components/context/useSession";
-import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import CreateOrder from "@/components/forms/createOrder";
 import Navbar from "@/components/NavBar";
@@ -12,7 +11,6 @@ import Draft from "@/components/optsDashboard/Draft";
 
 function Dashboard() {
   const { user } = useAuth();
-  const router = useRouter();
   const [openForm, setOpenForm] = useState(false);
   const [opts, setOpts] = useState(0);
 
@@ -72,8 +70,18 @@ function Dashboard() {
             >
               Current
             </p>
-            <p className={opts == 1 ? styles.select : styles.normal} onClick={() => setOpts(1)}>History</p>
-            <p className={opts == 2 ? styles.select : styles.normal} onClick={() => setOpts(2)}>Draft</p>
+            <p
+              className={opts == 1 ? styles.select : styles.normal}
+              onClick={() => setOpts(1)}
+            >
+              History
+            </p>
+            <p
+              className={opts == 2 ? styles.select : styles.normal}
+              onClick={() => setOpts(2)}
+            >
+              Draft
+            </p>
           </div>
         </div>
         {opts == 0 ? <Current /> : null}
@@ -82,7 +90,9 @@ function Dashboard() {
       </>
     );
   } else {
-    router.push("/account/signin");
+    if (typeof window !== "undefined") {
+      window.location.href = "/account/signin";
+    }
   }
 }
 
