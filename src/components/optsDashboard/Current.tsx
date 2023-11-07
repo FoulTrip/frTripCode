@@ -5,11 +5,9 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/useSession";
 import CardOrders, { orderItems } from "../cards/cardOrders";
 import styles from "./styles.module.css";
-import { useOrderStore } from "../liveOrders/OrderStore";
 
 function Current() {
-  const orders = useOrderStore((state) => state.orders);
-  const setOrders = useOrderStore((state) => state.setOrders);
+  const [orders, setOrders] = useState<orderItems[]>([]);
   const { user } = useAuth();
 
   console.log(orders)
