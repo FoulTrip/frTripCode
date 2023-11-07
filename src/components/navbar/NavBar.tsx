@@ -5,12 +5,13 @@ import Image from "next/image";
 import styles from "./navbar.module.css";
 import { useMediaQuery } from "@react-hook/media-query";
 
-import { useAuth } from "./context/useSession";
+import { useAuth } from "../context/useSession";
 
 import iconLogo from "@/assets/logo-tripcode.png";
 import { AiOutlineMenu } from "react-icons/ai";
 import { HiChevronDown, HiChevronDoubleUp } from "react-icons/hi";
 import Link from "next/link";
+import OptsNav from "./optsNav";
 
 // interface NavBarProps {
 //   openModal: (content: React.ReactNode) => void;
@@ -18,15 +19,12 @@ import Link from "next/link";
 
 function Navbar() {
   const responsive = useMediaQuery("(min-width: 900px)");
-  const [chevron, setChevron] = useState();
+  const [open, setOpen] = useState(false);
   const { user } = useAuth();
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("userData");
-    window.location.reload();
+  const handleOpenNav = () => {
+    setOpen(!open);
   };
-
-  const handlerChevron = () => {};
 
   return (
     <>
@@ -44,27 +42,37 @@ function Navbar() {
             <div className={styles.subAccount}>
               {user ? (
                 <>
-                  <Link href="/dashboard" className={styles.login}>
-                    Dashboard
-                  </Link>
-                  <div onClick={handleLogout} className={styles.login}>
-                    Logout
-                  </div>
+                  {open == false ? <OptsNav /> : null}
                 </>
               ) : (
-                <Link href="/account/signin" className={styles.login}>
-                  Account
-                </Link>
+                <>
+                  <Link href="/account/signin" className={styles.login}>
+                    Account
+                  </Link>
+                  <Link href="/account/signin" className={styles.login}>
+                    Working with us
+                  </Link>
+                </>
               )}
             </div>
           </div>
         ) : (
           <div className={styles.menuIcon}>
             <div className={styles.menuImg}>
-              <AiOutlineMenu />
+              <AiOutlineMenu
+                onClick={handleOpenNav}
+                className={styles.iconOpenNav}
+              />
             </div>
           </div>
         )}
+        {open ? (
+          <>
+            <div className={styles.boxNavResponsive}>
+              {open == true ? <OptsNav /> : null}
+            </div>
+          </>
+        ) : null}
       </header>
     </>
   );

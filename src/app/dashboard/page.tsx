@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useAuth } from "@/components/context/useSession";
 import styles from "./page.module.css";
 import CreateOrder from "@/components/forms/createOrder";
-import Navbar from "@/components/NavBar";
+import Navbar from "@/components/navbar/NavBar";
 import Current from "@/components/optsDashboard/Current";
 import History from "@/components/optsDashboard/History";
 import Draft from "@/components/optsDashboard/Draft";

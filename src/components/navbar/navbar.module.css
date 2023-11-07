@@ -26,6 +26,11 @@
     place-content: center;
 }
 
+.menuIcon {
+    display: grid;
+    place-content: center;
+}
+
 .iconLogo {
     width: 40px;
     height: 40px;
@@ -67,4 +72,13 @@
 .login:hover {
     background: teal;
     color: #ededed;
+}
+
+.iconOpenNav {
+    cursor: pointer;
+}
+
+.boxNavResponsive {
+    display: flex;
+    width: 100%;
 }

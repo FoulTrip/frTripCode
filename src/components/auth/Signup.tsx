@@ -29,7 +29,9 @@ function Signup() {
       const response = await axios.post("/api/auth/signup", data);
       toast.success(response.data);
       setTimeout(() => {
-        route.push("/account/signin");
+        if (typeof window !== "undefined") {
+          window.location.href = "/account/signin";
+        }
       }, 3000);
     } catch (error) {
       toast.error("Failed registration");

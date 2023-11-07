@@ -1,7 +1,4 @@
-"use client";
-
-import Navbar from "@/components/NavBar";
-import { useAuth } from "@/components/context/useSession";
+import Navbar from "@/components/navbar/NavBar";
 import styles from "./page.module.css";
 import Image from "next/image";
 
@@ -12,16 +9,13 @@ import {
   HiStatusOnline,
 } from "react-icons/hi";
 
-import whiteScreen from "@/assets/WhiteScreen.png";
+import whiteScreen from "@/assets/WhiteScreen.webp"
 import Link from "next/link";
 import { BsArrowRightShort } from "react-icons/bs";
 import CardSteps from "@/components/cards/cardSteps";
-import InfiniteSlider from "@/components/sliders/InfiniteSlider";
-
-
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
-  const { user } = useAuth();
   return (
     <>
       <Navbar />
@@ -88,6 +82,7 @@ export default function Home() {
         </div>
       </main>
       
+      <Footer />
     </>
   );
 }

@@ -10,7 +10,7 @@
 
 .banner {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     position: relative;
     bottom: 0;
     padding-top: 6em;
@@ -51,6 +51,16 @@
     height: auto;
     border-radius: 1em 0em 0em 1em;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+@media screen and (max-width: 900px) {
+    .imgWhiteScreen {
+        width: 100vw;
+    }
+
+    .subSlogan {
+        font-size: 3vw;
+    }
 }
 
 .boxBtn {
@@ -109,11 +119,12 @@
 }
 
 .subCarrousel {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     width: 90%;
     margin-left: 5%;
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 18rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 }
 
 .secondTitle {
