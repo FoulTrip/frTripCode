@@ -1,0 +1,17 @@
+/* .afterBoxOrder {
+    
+} */
+
+.boxOrders {
+    width: 90%;
+    margin-left: 5%;
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 18rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+.subBoxOrders {
+    display: flex;
+    flex-wrap: wrap;
+}

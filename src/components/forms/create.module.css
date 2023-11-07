@@ -1,0 +1,99 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.titleReq {
+    margin-bottom: 1em;
+    text-align: center;
+}
+  
+.inputBox {
+    width: 100%;
+    position: relative;
+    font-family: 'Nunito Sans', sans-serif;
+}
+  
+.input_field {
+    width: 93%;
+    padding: 10px;
+    border:  1px solid #000;
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1em;
+    form-sizing: content;
+    resize: vertical;
+}
+
+.input_label {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: default;
+}
+  
+.input_field:valid ~ span,
+.input_field:focus ~ span
+{
+    color: #000;
+    transform: translateX(10px) translateY(-7px);
+    background: #eeeeee;
+    padding: 0 10px;
+    font-size: 10px;
+}
+  
+.boxBtnSubmit {
+    display: grid;
+    place-content: center;
+}
+  
+.btnSubmit {
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+  
+.btnSubmit:hover {
+    scale: 1.03;
+}
+
+.selectedType {
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.btnOpt {
+    background: #fff;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.selectedType p:hover {
+    scale: 1.03;
+}
+
+.select {
+    padding: 5px;
+    cursor: pointer;
+    scale: 1.03;
+    background: #9999ff;
+    color: #eee9e9;
+}
+
+.boxBtnSubmit button {
+    padding: 10px;
+    border: 1px transparent;
+    background: #0d990d;
+    color: #eeeeee;
+    border-radius: 1em;
+}
