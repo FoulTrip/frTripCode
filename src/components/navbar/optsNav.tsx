@@ -10,7 +10,7 @@ const handleLogout = () => {
 function OptsNav() {
   return (
     <>
-      <Link href="/account/signin" className={styles.login}>
+      <Link href="/developers" className={styles.login}>
         Working with us
       </Link>
       <Link href="/dashboard" className={styles.login}>

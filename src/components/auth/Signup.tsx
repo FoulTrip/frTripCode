@@ -64,7 +64,7 @@ function Signup() {
           onChange={handleChange}
         />
 
-        <button type="submit">Registrarse</button>
+        <input type="submit">Registrarse</input>
       </form>
     </>
   );

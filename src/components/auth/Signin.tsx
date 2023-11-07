@@ -60,7 +60,7 @@ function Signin() {
             value={data.password}
           />
 
-          <button type="submit">Ingresar</button>
+          <input type="submit">Ingresar</input>
         </form>
       </>
     );
