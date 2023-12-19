@@ -6,31 +6,34 @@ import { useAuth } from "../context/useSession";
 import CardOrders, { orderItems } from "../cards/cardOrders";
 import styles from "./styles.module.css";
 
+export const updateOrders = async (
+  setOrders: React.Dispatch<React.SetStateAction<orderItems[]>>,
+  user_id: string | undefined
+) => {
+  try {
+    const response = await axios.post("/api/order/all", { user_id });
+    const data = response.data;
+    setOrders(data);
+  } catch (error) {
+    console.error("Error en la solicitud al servidor", error);
+  }
+};
+
 function Current() {
   const [orders, setOrders] = useState<orderItems[]>([]);
   const { user } = useAuth();
 
-  console.log(orders)
-
   useEffect(() => {
-    async function getOrders() {
-      const user_id: string | undefined = user?.detailsUser._id;
+    const intervalId = setInterval(() => {
+      updateOrders(setOrders, user?.detailsUser._id);
+    }, 3000);
 
-      try {
-        const response = await axios.post("/api/order/all", { user_id });
-        const data = response.data;
-        // console.log(data);
-        setOrders(data);
-      } catch (error) {
-        console.error("Error en la solicitud al servidor", error);
-      }
-    }
-
-    getOrders();
+    return () => clearInterval(intervalId);
   }, [user]);
 
   return (
     <div className={styles.afterBoxOrder}>
+      <h1 className={styles.activeOrdersTitle}>Ordenes activas</h1>
       {orders ? (
         <div className={styles.boxOrders}>
           {orders.map((order) => (

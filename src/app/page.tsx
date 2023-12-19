@@ -9,7 +9,7 @@ import {
   HiStatusOnline,
 } from "react-icons/hi";
 
-import whiteScreen from "@/assets/WhiteScreen.webp"
+import whiteScreen from "@/assets/WhiteScreen.webp";
 import Link from "next/link";
 import { BsArrowRightShort } from "react-icons/bs";
 import CardSteps from "@/components/cards/cardSteps";
@@ -20,34 +20,32 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main className={styles.main}>
-        <div className={styles.banner}>
-          <div className={styles.partText}>
-            <div className={styles.subPartText}>
-              <p className={styles.subSlogan}>
-                Clean and scalable code for your software
-              </p>
-              <p className={styles.slogan}>
-                Ready to take your company or startup to the next level? Our
-                software development expertise is your competitive advantage.{" "}
-              </p>
-              <div className={styles.boxBtn}>
-                <Link className={styles.btnVisit} href="/dashboard">
-                  <p>Get Started</p>
-                  <div className={styles.boxIcon}>
-                    <BsArrowRightShort />
-                  </div>
-                </Link>
-              </div>
+      <main className={styles.banner}>
+        <div className={styles.partText}>
+          <div className={styles.subPartText}>
+            <p className={styles.subSlogan}>
+              Clean and scalable code for your software
+            </p>
+            <p className={styles.slogan}>
+              Ready to take your company or startup to the next level? Our
+              software development expertise is your competitive advantage.{" "}
+            </p>
+            <div className={styles.boxBtn}>
+              <Link className={styles.btnVisit} href="/dashboard">
+                <p>Get Started</p>
+                <div className={styles.boxIcon}>
+                  <BsArrowRightShort />
+                </div>
+              </Link>
             </div>
           </div>
-          <div className={styles.partImg}>
-            <Image
-              src={whiteScreen}
-              className={styles.imgWhiteScreen}
-              alt="WhiteScreen"
-            />
-          </div>
+        </div>
+        <div className={styles.partImg}>
+          <Image
+            src={whiteScreen}
+            className={styles.imgWhiteScreen}
+            alt="WhiteScreen"
+          />
         </div>
       </main>
 
@@ -81,7 +79,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </>
   );

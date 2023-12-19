@@ -3,15 +3,14 @@
 import React, { FormEvent, useState } from "react";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
-import { useRouter } from "next/navigation";
+import styles from "./forms.module.css";
 
 function Signup() {
-  const route = useRouter();
-
   const [data, setData] = useState({
     username: "",
     password: "",
     email: "",
+    type_account: "client"
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +25,9 @@ function Signup() {
     e.preventDefault();
 
     try {
+      console.log(data)
       const response = await axios.post("/api/auth/signup", data);
-      toast.success(response.data);
+      toast.success(response.data.message);
       setTimeout(() => {
         if (typeof window !== "undefined") {
           window.location.href = "/account/signin";
@@ -41,13 +41,14 @@ function Signup() {
   return (
     <>
       <Toaster richColors />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"
           name="username"
           placeholder="Username"
           onChange={handleChange}
           value={data.username}
+          className={styles.inputForm}
         />
         <input
           type="password"
@@ -55,6 +56,7 @@ function Signup() {
           placeholder="Password"
           onChange={handleChange}
           value={data.password}
+          className={styles.inputForm}
         />
         <input
           type="text"
@@ -62,9 +64,12 @@ function Signup() {
           placeholder="Email"
           value={data.email}
           onChange={handleChange}
+          className={styles.inputForm}
         />
 
-        <input type="submit">Registrarse</input>
+        <div className={styles.boxBtn}>
+          <input className={styles.realBtn} type="submit" value="Registrar" />
+        </div>
       </form>
     </>
   );

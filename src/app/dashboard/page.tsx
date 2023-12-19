@@ -8,15 +8,27 @@ import Navbar from "@/components/navbar/NavBar";
 import Current from "@/components/optsDashboard/Current";
 import History from "@/components/optsDashboard/History";
 import Draft from "@/components/optsDashboard/Draft";
+import axios from "axios";
 
 function Dashboard() {
   const { user } = useAuth();
   const [openForm, setOpenForm] = useState(false);
-  const [opts, setOpts] = useState(0);
+  const [orders, setOrders] = useState([])
+  const user_id: string | undefined = user?.detailsUser._id;
 
   const handleOpenForm = () => {
     setOpenForm(!openForm);
   };
+
+  const updateOrders = async () => {
+    try {
+      const response = await axios.post("/api/order/all", {user_id})
+      const data = response.data
+      setOrders(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   if (user?.detailsUser.status == "authenticated") {
     return (
@@ -58,35 +70,11 @@ function Dashboard() {
           </div>
           {openForm ? (
             <div className={styles.subBoxCreate}>
-              <CreateOrder />
+              <CreateOrder updateOrders={updateOrders} />
             </div>
           ) : null}
         </div>
-        <div className={styles.boxOptions}>
-          <div className={styles.subBoxOptions}>
-            <p
-              onClick={() => setOpts(0)}
-              className={opts == 0 ? styles.select : styles.normal}
-            >
-              Current
-            </p>
-            <p
-              className={opts == 1 ? styles.select : styles.normal}
-              onClick={() => setOpts(1)}
-            >
-              History
-            </p>
-            <p
-              className={opts == 2 ? styles.select : styles.normal}
-              onClick={() => setOpts(2)}
-            >
-              Draft
-            </p>
-          </div>
-        </div>
-        {opts == 0 ? <Current /> : null}
-        {opts == 1 ? <History /> : null}
-        {opts == 2 ? <Draft /> : null}
+        <Current />
       </>
     );
   } else {

@@ -7,8 +7,14 @@
     margin-left: 5%;
     display: grid;
     gap: 1rem;
-    grid-auto-rows: 20.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+}
+
+.activeOrdersTitle {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .subBoxOrders {

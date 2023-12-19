@@ -31,7 +31,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const infoSession = sessionStorage.getItem("userData");
+    const infoSession = localStorage.getItem("userData");
     if (infoSession) {
       setUser(JSON.parse(infoSession));
     }
